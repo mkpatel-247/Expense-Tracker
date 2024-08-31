@@ -1,1 +1,10 @@
-<p>dashboard works!</p>
+<section class="px-8 min-h-screen">
+    <div class="flex flex-row gap-3 p-6">
+        <ng-container *ngFor="let item of [1,2,2,4]">
+            <app-card></app-card>
+        </ng-container>
+    </div>
+    <div class="flex flex-row p-6">
+        <app-recent-transactions></app-recent-transactions>
+    </div>
+</section>
