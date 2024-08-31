@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostBinding, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./layout/header/header.component";
+import { CommonService } from 'src/shared/services/common.service';
+import { AuthService } from 'src/shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -11,9 +13,14 @@ import { HeaderComponent } from "./layout/header/header.component";
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
+
   title = 'expense-tracker';
 
-  constructor(private router: Router) { }
+  @HostBinding('class.dark') get mode() {
+    return this.commonService.darkMode();
+  }
+
+  constructor(private router: Router, private commonService: CommonService, public authService: AuthService) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('authToken')) {

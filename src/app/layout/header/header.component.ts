@@ -1,6 +1,8 @@
 import { Component, effect, HostBinding, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { AuthService } from 'src/shared/services/auth.service';
+import { CommonService } from 'src/shared/services/common.service';
 
 @Component({
   selector: 'app-header',
@@ -10,15 +12,10 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  darkMode = signal<boolean>(JSON.parse(localStorage.getItem('darkMode') ?? 'false'));
 
-  @HostBinding('class.dark') get mode() {
-    return this.darkMode();
-  }
-
-  constructor() {
+  constructor(public authService: AuthService, public commonService: CommonService) {
     effect(() => {
-      localStorage.setItem('darkMode', JSON.stringify(this.darkMode()));
+      localStorage.setItem('darkMode', JSON.stringify(this.commonService.darkMode()));
     })
   }
 }
