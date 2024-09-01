@@ -20,6 +20,7 @@ export class AuthComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('authToken')) {
+      this.authService.isUserLoggedIn.set(true);
       this.router.navigateByUrl('');
     } else {
       // this.authService.isUserLoggedIn.set(true);
@@ -39,10 +40,11 @@ export class AuthComponent implements OnInit {
     if (this.loginForm.valid) {
       const details = this.loginForm.value;
       if (details.email == 'test@demo.com' && details.password == '123456') {
-        effect(() => {
-          this.authService.isUserLoggedIn.set(true);
-        })
+        this.authService.isUserLoggedIn.set(true);
         localStorage.setItem('authToken', JSON.stringify({ user: 'VALID' }));
+        this.router.navigateByUrl('');
+      } else {
+        this.loginForm.markAllAsTouched();
       }
     }
     this.loginForm.markAllAsTouched();
