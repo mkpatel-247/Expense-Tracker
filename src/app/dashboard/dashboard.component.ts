@@ -12,4 +12,9 @@ import { RecentTransactionsComponent } from 'src/shared/components/recent-transa
 })
 export class DashboardComponent {
 
+  cardsDetails = [
+    { title: 'Income', amount: '4500' },
+    { title: 'Expense', amount: '500' },
+  ]
+
 }
