@@ -1,7 +1,7 @@
-<div
+<!-- <div
     class="flex flex-col items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
-    <!-- <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
-    src="/docs/images/blog/image-4.jpg" alt=""> -->
+    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
+    src="/docs/images/blog/image-4.jpg" alt="">
     <div class="flex flex-col justify-between p-4 leading-normal">
         <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             {{cardTitle}}
@@ -9,6 +9,24 @@
         <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
             {{description}}
         </p>
+    </div>
+</div> -->
+<div
+    class="p-6 max-w-sm mx-auto bg-white rounded-xl shadow-xl space-x-8 dark:border-gray-700 dark:bg-slate-800 dark:hover:bg-gray-700">
+    <div class="font-medium tracking-tight text-gray-900 dark:text-white">
+        <h3 class="text-xl mb-3">
+            {{cardTitle}}
+        </h3>
+        <!-- <div class="flex items-center justify-center"> -->
+        <!-- <div class="rounded-full p-2 me-3"
+                [ngClass]="{'bg-emerald-600 dark:bg-green-600': cardTitle == 'Income', 'bg-rose-600 dark:bg-red-600': cardTitle=='Expense'}">
+                <img class="size-16" src="/assets/image/currency_exchange_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png"
+                    alt="ChitChat Logo">
+            </div> -->
+        <div>
+            <h4 class="text-gray-700 dark:text-gray-400 text-3xl font-semibold">{{description | currency}}</h4>
+        </div>
+        <!-- </div> -->
     </div>
 </div>
 
