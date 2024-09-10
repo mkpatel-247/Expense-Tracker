@@ -10,7 +10,7 @@
 }
 
 .active {
-    @apply text-white bg-purple-700;
+    @apply text-purple-700 dark:text-purple-400 font-semibold border-b-4 border-purple-700 p-2 transition-transform duration-200 ease-in-out transform hover:scale-105;
 }
 
 ::-webkit-scrollbar-track {

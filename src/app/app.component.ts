@@ -4,11 +4,12 @@ import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./layout/header/header.component";
 import { CommonService } from 'src/shared/services/common.service';
 import { AuthService } from 'src/shared/services/auth.service';
+import { FooterComponent } from './layout/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, HeaderComponent],
+  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
