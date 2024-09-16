@@ -1,109 +1,44 @@
 <div
-    class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow sm:p-8 dark:bg-gray-800 dark:border-gray-700">
-    <div class="flex items-center justify-between mb-4">
-        <h5 class="text-xl font-bold leading-none text-gray-900 dark:text-white">Latest Customers</h5>
-        <a routerLink="/transaction" class="text-sm font-medium text-blue-600 hover:underline dark:text-blue-500">
+    class="w-full max-w-md p-4 bg-white border border-gray-200 rounded-lg shadow-xl sm:p-8 dark:bg-gray-800 dark:border-gray-700">
+    <div class="flex items-baseline justify-between mb-4 gap-2">
+        <h5 class="text-lg font-bold text-gray-900 dark:text-white truncate">Recent Transactions</h5>
+        <a routerLink="/transaction" class="text-sm font-medium text-purple-600 dark:text-purple-500 whitespace-nowrap">
             View all
         </a>
     </div>
     <div class="flow-root">
         <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-700">
-            <li class="py-3 sm:py-4">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <img class="w-8 h-8 rounded-full"
-                            src="./assets/image/person_24dp_E8EAED_FILL0_wght400_GRAD0_opsz24.png"
-                            (error)="onImageNotFound($event)" alt="Neil image">
+            <ng-container *ngFor="let item of recentTransactions">
+                <li class="py-3 sm:py-4">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <!-- <ng-container *ngIf="item.status == 'income'; else expense">
+                                <img class="w-8 h-8 rounded-full" src="./assets/image/money_in.png"
+                                    (error)="onImageNotFound($event)" alt="Neil image">
+                            </ng-container>
+                            <ng-template #expense>
+                                <img class="w-8 h-8 rounded-full" src="./assets/image/money_out.png"
+                                    (error)="onImageNotFound($event)" alt="Neil image">
+                            </ng-template> -->
+                            <span class="material-icons text-slate-600 dark:text-slate-300">
+                                attach_money
+                            </span>
+                        </div>
+                        <div class="flex-1 min-w-1">
+                            <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
+                                {{item.name | titlecase}}
+                            </p>
+                            <p class="text-sm text-gray-500 truncate dark:text-gray-400">
+                                {{item.category | titlecase}}
+                            </p>
+                        </div>
+                        <div class="inline-flex items-center text-base font-semibold"
+                            [ngClass]="{'text-income': item.status == 'income', ' text-expense': item.status == 'expense'}">
+                            {{item.amount | currency}}
+                        </div>
                     </div>
-                    <div class="flex-1 min-w-0 ms-4">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                            Neil Sims
-                        </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                            email@windster.com
-                        </p>
-                    </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                        $320
-                    </div>
-                </div>
-            </li>
-            <li class="py-3 sm:py-4">
-                <div class="flex items-center ">
-                    <div class="flex-shrink-0">
-                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-3.jpg"
-                            (error)="onImageNotFound($event)" alt="Bonnie image">
-                    </div>
-                    <div class="flex-1 min-w-0 ms-4">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                            Bonnie Green
-                        </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                            email@windster.com
-                        </p>
-                    </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                        $3467
-                    </div>
-                </div>
-            </li>
-            <li class="py-3 sm:py-4">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-2.jpg"
-                            (error)="onImageNotFound($event)" alt="Michael image">
-                    </div>
-                    <div class="flex-1 min-w-0 ms-4">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                            Michael Gough
-                        </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                            email@windster.com
-                        </p>
-                    </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                        $67
-                    </div>
-                </div>
-            </li>
-            <li class="py-3 sm:py-4">
-                <div class="flex items-center ">
-                    <div class="flex-shrink-0">
-                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-4.jpg"
-                            (error)="onImageNotFound($event)" alt="Lana image">
-                    </div>
-                    <div class="flex-1 min-w-0 ms-4">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                            Lana Byrd
-                        </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                            email@windster.com
-                        </p>
-                    </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                        $367
-                    </div>
-                </div>
-            </li>
-            <li class="pt-3 pb-0 sm:pt-4">
-                <div class="flex items-center ">
-                    <div class="flex-shrink-0">
-                        <img class="w-8 h-8 rounded-full" src="/docs/images/people/profile-picture-5.jpg"
-                            (error)="onImageNotFound($event)" alt="Thomas image">
-                    </div>
-                    <div class="flex-1 min-w-0 ms-4">
-                        <p class="text-sm font-medium text-gray-900 truncate dark:text-white">
-                            Thomes Lean
-                        </p>
-                        <p class="text-sm text-gray-500 truncate dark:text-gray-400">
-                            email@windster.com
-                        </p>
-                    </div>
-                    <div class="inline-flex items-center text-base font-semibold text-gray-900 dark:text-white">
-                        $2367
-                    </div>
-                </div>
-            </li>
+                </li>
+            </ng-container>
         </ul>
     </div>
 </div>

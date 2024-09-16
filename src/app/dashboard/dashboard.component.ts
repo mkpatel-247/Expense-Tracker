@@ -70,4 +70,10 @@ export class DashboardComponent implements OnInit {
       categories: ["food", "rent", "travel", "other"]
     }
   }
+
+  cardsDetails = [
+    { title: 'Income', amount: '4500' },
+    { title: 'Expense', amount: '500' },
+  ]
+
 }
