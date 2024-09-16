@@ -12,6 +12,7 @@ import { CommonService } from 'src/shared/services/common.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  isMenuOpen: boolean = false;
 
   constructor(public authService: AuthService, public commonService: CommonService) {
     effect(() => {

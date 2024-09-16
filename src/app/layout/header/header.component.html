@@ -1,33 +1,52 @@
-<header class="text-gray-400 dark:bg-gray-900 dark:text-white body-font">
-    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+<header class="bg-white dark:bg-gray-900 shadow-lg text-gray-700 dark:text-gray-100 dark:shadow-gray-900 body-font">
+    <div class="container mx-auto flex flex-wrap p-4 md:p-5 items-center justify-between">
+        <!-- Logo Section -->
         <a class="flex title-font items-center mb-4 md:mb-0">
-            <div class="ml-3 text-xl">
-                <span class="font-medium tracking-wide truncate">
+            <div class="text-2xl font-bold">
+                <span class="font-extrabold tracking-wider">
                     Expense Tracker
                 </span>
-                <span class="text-purple-700 font-black truncate">.</span>
+                <span class="text-purple-700 dark:text-purple-500 font-black ml-1">.</span>
             </div>
         </a>
-        <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center gap-2 md:gap-0">
-            <a class="md:mr-5 hover:text-white btn-primary" routerLink="dashboard"
+
+        <!-- Navigation Links (Visible on medium screens and above) -->
+        <nav
+            class="hidden md:flex md:ml-auto flex-wrap items-center text-base justify-center gap-4 transition-all duration-300">
+            <a class="hover:text-purple-600 dark:hover:text-purple-400 transition duration-300" routerLink="dashboard"
                 routerLinkActive="active">Dashboard</a>
-            <a class="md:mr-5 hover:text-white btn-primary" routerLink="transaction"
-                routerLinkActive="active">Transaction
-                History</a>
-            <a class="md:mr-5 hover:text-white btn-primary" routerLinkActive="active">Add Transaction</a>
-            <!-- <ng-container *ngIf="!authService.isUserLoggedIn()">
-                <a class="md:mr-5 btn-primary" routerLink="/auth/login" routerLinkActive="active">
-                    <div class="flex flex-wrap">
-                    Login
-                    <span class="material-icons">lock</span>
-                    </div>
-                </a>
-            </ng-container> -->
-            <button class="flex transition-transform hover:scale-125 align-middle"
-                (click)="commonService.darkMode.set(!commonService.darkMode())">
-                <span *ngIf="!commonService.darkMode()" class="material-icons">dark_mode</span>
-                <span *ngIf="commonService.darkMode()" class="material-icons">light_mode</span>
-            </button>
+            <a class="hover:text-purple-600 dark:hover:text-purple-400 transition duration-300" routerLink="transaction"
+                routerLinkActive="active">Transaction History</a>
+            <a class="hover:text-purple-600 dark:hover:text-purple-400 transition duration-300"
+                routerLink="add-transaction" routerLinkActive="active">Add Transaction</a>
         </nav>
+
+        <!-- Mobile Menu Toggle (Visible on smaller screens) -->
+        <button class="block md:hidden text-gray-700 dark:text-gray-300 focus:outline-none"
+            (click)="isMenuOpen = !isMenuOpen">
+            <span class="material-icons">menu</span>
+        </button>
+
+        <!-- Dark Mode Toggle -->
+        <button
+            class="ml-4 flex items-center bg-gray-200 dark:bg-gray-800 rounded-full p-2 transition-transform duration-300 hover:scale-110"
+            (click)="commonService.darkMode.set(!commonService.darkMode())">
+            <span *ngIf="!commonService.darkMode()"
+                class="material-icons text-gray-600 dark:text-gray-300">dark_mode</span>
+            <span *ngIf="commonService.darkMode()"
+                class="material-icons text-gray-600 dark:text-gray-300">light_mode</span>
+        </button>
     </div>
+
+    <!-- Mobile Menu (Visible when isMenuOpen is true) -->
+    <nav class="md:hidden" *ngIf="isMenuOpen">
+        <div class="flex flex-col gap-4 p-4 bg-gray-50 dark:bg-gray-800">
+            <a class="hover:text-purple-600 dark:hover:text-purple-400 transition duration-300" routerLink="dashboard"
+                routerLinkActive="active">Dashboard</a>
+            <a class="hover:text-purple-600 dark:hover:text-purple-400 transition duration-300" routerLink="transaction"
+                routerLinkActive="active">Transaction History</a>
+            <a class="hover:text-purple-600 dark:hover:text-purple-400 transition duration-300"
+                routerLink="add-transaction" routerLinkActive="active">Add Transaction</a>
+        </div>
+    </nav>
 </header>
